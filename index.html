@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Mwasalaty | Smarter Transportation for Greater Cairo</title>
+<meta name="description" content="Mwasalaty helps daily commuters compare transportation options by time, cost, and pickup point, making everyday travel easier and more predictable.">
+<meta property="og:title" content="Mwasalaty | مواصلاتي">
+<meta property="og:description" content="Compare transportation options by time, cost, and pickup point — and choose the ride that works best for you.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#12182B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23E31E24'/%3E%3Cpath d='M28 62 L50 30 L72 62' stroke='white' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='72' r='6' fill='white'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Cairo:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="custom-cursor" id="customCursor" aria-hidden="true"><div class="cursor-dot" id="cursorDot"></div><div class="cursor-ring" id="cursorRing"></div></div>
+
+<nav class="journey-rail" id="journeyRail" aria-label="Page sections">
+  <div class="track" id="railTrack">
+    <div class="track-fill" id="railFill"></div>
+    <button type="button" class="stop" data-target="hero-top" style="top:0%;"><span class="tip" id="rail-1">Start</span></button>
+    <button type="button" class="stop" data-target="how"><span class="tip" id="rail-2">How it works</span></button>
+    <button type="button" class="stop" data-target="why"><span class="tip" id="rail-3">Why Mwasalaty</span></button>
+    <button type="button" class="stop" data-target="shared"><span class="tip" id="rail-4">Shared rides</span></button>
+    <button type="button" class="stop" data-target="about"><span class="tip" id="rail-5">Our process</span></button>
+    <button type="button" class="stop" data-target="cta"><span class="tip" id="rail-6">Join pilot</span></button>
+    <div class="marker" id="railMarker"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15h16M6 15v3m12-3v3M5 15l1.5-6.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 15M7 11h10" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+  </div>
+</nav>
+
+<a href="#main" class="skip-link" id="skip-link">Skip to content</a>
+
+<!-- ============ NAV ============ -->
+<header class="site-nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M5 15L12 6L19 15" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="18.5" r="1.6" fill="white"/></svg></span>
+      <span id="t-brand">Mwasalaty</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#how" id="nav-how">How it works</a></li>
+      <li><a href="#why" id="nav-why">Why Mwasalaty</a></li>
+      <li><a href="#shared" id="nav-shared">Shared rides</a></li>
+      <li><a href="#about" id="nav-about">About</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button data-lang="en" class="active" id="lang-en-btn" aria-pressed="true">EN</button>
+        <button data-lang="ar" id="lang-ar-btn" aria-pressed="false">AR</button>
+      </div>
+      <a href="#cta" class="btn btn-primary nav-cta" id="nav-cta-btn">Try Mwasalaty</a>
+      <button class="menu-btn" id="menuOpenBtn" aria-label="Open menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#12182B" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="top">
+    <a href="#" class="logo"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M5 15L12 6L19 15" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span id="t-brand-m">Mwasalaty</span></a>
+    <button class="close-btn" id="menuCloseBtn" aria-label="Close menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+  <nav>
+    <a href="#how" id="m-nav-how">How it works</a>
+    <a href="#why" id="m-nav-why">Why Mwasalaty</a>
+    <a href="#shared" id="m-nav-shared">Shared rides</a>
+    <a href="#about" id="m-nav-about">About</a>
+  </nav>
+  <a href="#cta" class="btn btn-primary" id="m-nav-cta-btn">Try Mwasalaty</a>
+</div>
+
+<main id="main">
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero-top">
+  <div class="hero-ambient" aria-hidden="true"><span class="orb orb-1"></span><span class="orb orb-2"></span><span class="orb orb-3"></span></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow" id="hero-eyebrow">Transportation, simplified</div>
+      <h1 id="hero-title">Your best way<br>to get there.</h1>
+      <p class="lead" id="hero-lead">Compare transportation options by time, cost, and pickup point — and choose the ride that works best for you.</p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn btn-primary" id="hero-cta-primary">Try Mwasalaty</a>
+        <a href="#how" class="btn btn-ghost" id="hero-cta-secondary">See how it works</a>
+      </div>
+      <p class="hero-trust" id="hero-trust-note">No signup required to try the live demo below.</p>
+      <div class="hero-meta">
+        <div class="item"><span class="num">4</span><span class="lbl" id="hm-1">Transport modes compared</span></div>
+        <div class="item"><span class="num">21M+</span><span class="lbl" id="hm-2">Commuters in Greater Cairo</span></div>
+        <div class="item"><span class="num">1</span><span class="lbl" id="hm-3">Simple search to compare</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg class="route-bg" viewBox="0 0 500 600" fill="none">
+        <path id="heroRoutePath" d="M40 560 C 120 480, 60 380, 160 340 C 260 300, 220 200, 340 150 C 400 125, 420 80, 460 40" stroke="#E31E24" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round" opacity=".35"/>
+        <circle cx="40" cy="560" r="6" fill="#E31E24" opacity=".5"/>
+        <circle cx="460" cy="40" r="6" fill="#12182B" opacity=".35"/>
+        <circle r="5.5" fill="#E31E24" class="route-traveler">
+          <animateMotion dur="6s" repeatCount="indefinite" rotate="auto"><mpath href="#heroRoutePath"/></animateMotion>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.92;1" dur="6s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="4.5" fill="#12182B" class="route-traveler">
+          <animateMotion dur="6s" begin="-3s" repeatCount="indefinite" rotate="auto"><mpath href="#heroRoutePath"/></animateMotion>
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.92;1" dur="6s" begin="-3s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+      <div class="float-chip chip-1"><span class="dot"></span><span id="chip-1-txt">Metro arriving in 4 min</span></div>
+      <div class="float-chip chip-2"><span class="dot"></span><span id="chip-2-txt">Pickup confirmed</span></div>
+      <div class="phone-float">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-status"><span>9:41</span><span>●●●</span></div>
+          <div class="phone-app-bar"><span class="dot"></span><span id="phone-app-name">Mwasalaty</span></div>
+          <div class="phone-body">
+            <div class="field-stub"><span class="pin from"></span><div class="txt"><small id="phone-from-lbl">CURRENT LOCATION</small><strong id="phone-from-val">Nasr City</strong></div></div>
+            <div class="field-stub"><span class="pin to"></span><div class="txt"><small id="phone-to-lbl">DESTINATION</small><strong id="phone-to-val">Downtown Cairo</strong></div></div>
+            <div class="mini-opt sel">
+              <div class="left"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15h16M6 15v3m12-3v3M5 15l1.5-6.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 15M7 11h10" stroke="#E31E24" stroke-width="1.6" stroke-linecap="round"/></svg></span><div><div class="name" id="phone-opt1-name">Metro</div><div class="sub" id="phone-opt1-sub">32 min · Fastest</div></div></div>
+              <div class="price">15<span style="font-size:9px;"> EGP</span></div>
+            </div>
+            <div class="mini-opt">
+              <div class="left"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 16h16M6 16v2.5m12-2.5v2.5M5 16l1-7a2 2 0 0 1 2-1.7h8a2 2 0 0 1 2 1.7l1 7" stroke="#12182B" stroke-width="1.6" stroke-linecap="round"/></svg></span><div><div class="name" id="phone-opt2-name">Shared Ride</div><div class="sub" id="phone-opt2-sub">35 min · Convenient</div></div></div>
+              <div class="price">18<span style="font-size:9px;"> EGP</span></div>
+            </div>
+            <div class="mini-cta" id="phone-cta">Choose this ride</div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <a href="#how" class="scroll-cue" id="scrollCue" aria-label="Scroll to explore">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 4v14m0 0l-5-5m5 5l5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</section>
+
+<div class="marquee-band" aria-hidden="true">
+  <div class="marquee-track" id="marquee-track">Metro · Bus · Microbus · Shared Ride · Compare · Choose · Go · Metro · Bus · Microbus · Shared Ride · Compare · Choose · Go ·</div>
+</div>
+
+<!-- ============ PROBLEM ============ -->
+<section class="problem">
+  <div class="spotlight" id="spotlight-problem"></div>
+  <div class="ambient-orbs ambient-a" aria-hidden="true"><span class="aorb ao-1"></span><span class="aorb ao-2"></span></div>
+  <div class="wrap">
+    <div class="eyebrow" id="prob-eyebrow">The problem</div>
+    <h2 class="section-title" id="prob-title">Every commute comes with too many unknowns.</h2>
+    <p class="section-sub" id="prob-sub">Transportation information exists — it's just scattered across too many places to compare easily before you leave.</p>
+    <div class="pain-grid reveal-group">
+      <div class="pain-card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 7v6l4 2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke-width="1.8"/></svg></div><h4 id="pc-1">Uncertain waiting times</h4></div>
+      <div class="pain-card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 17h2l2-6h10l2 6h2M5 17v2m14-2v2M7 11l1.5-4h7L17 11" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4 id="pc-2">Traffic delays</h4></div>
+      <div class="pain-card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M9 9h.01M15 9h.01M8 15c1.5 1.3 3.5 1.3 5 0M12 3a9 9 0 100 18 9 9 0 000-18z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4 id="pc-3">Confusing options</h4></div>
+      <div class="pain-card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 7c0-1.7-2.2-3-5-3s-5 1.3-5 3 2.2 3 5 3 5 1.3 5 3-2.2 3-5 3-5-1.3-5-3" stroke-width="1.8" stroke-linecap="round"/></svg></div><h4 id="pc-4">Different prices, same trip</h4></div>
+      <div class="pain-card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M17 20c0-2.8-2.2-5-5-5s-5 2.2-5 5M12 12a3.5 3.5 0 100-7 3.5 3.5 0 000 7zM19 20c0-2-1-3.6-2.5-4.5M5 20c0-2 1-3.6 2.5-4.5M17 8a3 3 0 100-6M7 8a3 3 0 110-6" stroke-width="1.6" stroke-linecap="round"/></svg></div><h4 id="pc-5">Crowded, uncomfortable rides</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOLUTION ============ -->
+<section class="solution">
+  <div class="wrap">
+    <div class="eyebrow" id="sol-eyebrow">The solution</div>
+    <h2 class="section-title" id="sol-title">One place. Every option.</h2>
+    <p class="section-sub" id="sol-sub">Mwasalaty brings buses, microbuses, metro, and shared rides together so you can compare your options before you leave.</p>
+    <div class="flow-row reveal-group">
+      <div class="flow-line-track"><div class="flow-line-fill" id="flowLineFill"></div></div>
+      <div class="flow-step reveal-scale"><div class="circle"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="10" r="3" stroke="#12182B" stroke-width="1.8"/><path d="M12 21c4-4.5 7-8 7-11a7 7 0 10-14 0c0 3 3 6.5 7 11z" stroke="#12182B" stroke-width="1.8"/></svg></div><span id="fl-1">Location</span></div>
+      <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="flow-step reveal-scale"><div class="circle"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="10" r="3" stroke="#E31E24" stroke-width="1.8"/><path d="M12 21c4-4.5 7-8 7-11a7 7 0 10-14 0c0 3 3 6.5 7 11z" stroke="#E31E24" stroke-width="1.8"/></svg></div><span id="fl-2">Destination</span></div>
+      <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="flow-step reveal-scale"><div class="circle"><svg viewBox="0 0 24 24" fill="none"><path d="M4 17h16M4 12h16M4 7h16" stroke="#12182B" stroke-width="1.8" stroke-linecap="round"/></svg></div><span id="fl-3">Compare</span></div>
+      <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="flow-step reveal-scale"><div class="circle"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#12182B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span id="fl-4">Choose</span></div>
+      <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="flow-step reveal-scale"><div class="circle"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h13m0 0l-5-5m5 5l-5 5" stroke="#E31E24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span id="fl-5">Go</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how">
+  <div class="wrap how-grid">
+    <div>
+      <div class="eyebrow" id="how-eyebrow">How it works</div>
+      <h2 class="section-title" id="how-title">From search to seat, in a few taps.</h2>
+      <div class="step-list">
+        <div class="step-item"><span class="step-num">01</span><div><h4 id="hw-1-t">Enter your location</h4><p id="hw-1-d">Tell Mwasalaty where you're starting from.</p></div></div>
+        <div class="step-item"><span class="step-num">02</span><div><h4 id="hw-2-t">Enter your destination</h4><p id="hw-2-d">Add where you need to be.</p></div></div>
+        <div class="step-item"><span class="step-num">03</span><div><h4 id="hw-3-t">Compare transportation</h4><p id="hw-3-d">See microbus, bus, metro, and shared ride side by side.</p></div></div>
+        <div class="step-item"><span class="step-num">04</span><div><h4 id="hw-4-t">Choose the best option</h4><p id="hw-4-d">Pick based on what matters most to you — time, cost, or comfort.</p></div></div>
+        <div class="step-item"><span class="step-num">05</span><div><h4 id="hw-5-t">Meet at the pickup point</h4><p id="hw-5-d">Head to the suggested spot and go.</p></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="demo-note"><span class="dot"></span><span id="hw-note">Example UI cards — illustrative values</span></div>
+      <div class="opt-preview-grid reveal-group">
+        <div class="opt-card reveal"><span class="badge" id="oc-1-badge">Fastest</span><div class="icwrap"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15h16M6 15v3m12-3v3M5 15l1.5-6.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 15M7 11h10" stroke-width="1.6" stroke-linecap="round"/></svg></div><h4 id="oc-1-name">Metro</h4><div class="row"><span id="oc-time-lbl">Time</span><b>32 min</b></div><div class="row"><span id="oc-cost-lbl">Cost</span><b>EGP 15</b></div><div class="row"><span id="oc-pickup-lbl">Pickup</span><b id="oc-1-pickup">Nearest station</b></div></div>
+        <div class="opt-card reveal"><span class="badge" id="oc-2-badge">Lowest cost</span><div class="icwrap"><svg viewBox="0 0 24 24" fill="none"><path d="M3 17h2l2-6h10l2 6h2M5 17v2m14-2v2M7 11l1.5-4h7L17 11" stroke-width="1.6" stroke-linecap="round"/></svg></div><h4 id="oc-2-name">Bus</h4><div class="row"><span id="oc-time-lbl2">Time</span><b>45 min</b></div><div class="row"><span id="oc-cost-lbl2">Cost</span><b>EGP 10</b></div><div class="row"><span id="oc-pickup-lbl2">Pickup</span><b id="oc-2-pickup">Main bus stop</b></div></div>
+        <div class="opt-card reveal"><div class="icwrap"><svg viewBox="0 0 24 24" fill="none"><path d="M4 16h16M6 16v2.5m12-2.5v2.5M5 16l1-7a2 2 0 0 1 2-1.7h8a2 2 0 0 1 2 1.7l1 7" stroke-width="1.6" stroke-linecap="round"/></svg></div><h4 id="oc-3-name">Microbus</h4><div class="row"><span id="oc-time-lbl3">Time</span><b>35 min</b></div><div class="row"><span id="oc-cost-lbl3">Cost</span><b>EGP 20</b></div><div class="row"><span id="oc-pickup-lbl3">Pickup</span><b id="oc-3-pickup">Designated point</b></div></div>
+        <div class="opt-card reveal"><span class="badge" id="oc-4-badge">Most convenient</span><div class="icwrap"><svg viewBox="0 0 24 24" fill="none"><path d="M17 20c0-2.8-2.2-5-5-5s-5 2.2-5 5M12 12a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" stroke-width="1.6" stroke-linecap="round"/></svg></div><h4 id="oc-4-name">Shared ride</h4><div class="row"><span id="oc-time-lbl4">Time</span><b>35 min</b></div><div class="row"><span id="oc-cost-lbl4">Cost</span><b>EGP 18</b></div><div class="row"><span id="oc-pickup-lbl4">Pickup</span><b id="oc-4-pickup">Common point</b></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTERACTIVE DEMO ============ -->
+<section class="demo">
+  <div class="wrap">
+    <div class="eyebrow" id="demo-eyebrow">Try it yourself</div>
+    <h2 class="section-title" id="demo-title">See Mwasalaty in action.</h2>
+    <p class="section-sub" id="demo-sub">Enter a route below to preview how comparing transportation options feels.</p>
+
+    <div class="demo-panel">
+      <div class="demo-form">
+        <div class="demo-field">
+          <label id="df-from-lbl" for="df-from">Current location</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="10" r="3"/><path d="M12 21c4-4.5 7-8 7-11a7 7 0 10-14 0c0 3 3 6.5 7 11z"/></svg>
+            <input id="df-from" type="text" value="Nasr City" autocomplete="off">
+          </div>
+        </div>
+        <div class="demo-field">
+          <label id="df-to-lbl" for="df-to">Destination</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="10" r="3"/><path d="M12 21c4-4.5 7-8 7-11a7 7 0 10-14 0c0 3 3 6.5 7 11z"/></svg>
+            <input id="df-to" type="text" value="Downtown Cairo" autocomplete="off">
+          </div>
+        </div>
+        <button class="btn btn-primary demo-submit" id="demoSubmit">Find my best route</button>
+      </div>
+
+      <div class="demo-results" id="demoResults" role="region" aria-live="polite" aria-label="Route comparison results">
+        <div class="demo-empty" id="demoEmpty">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 20l-5-2V6l5 2m0 12l6-2m-6 2V8m6 10l5 2V8l-5-2m0 14V6m0 0l-6 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p id="demo-empty-txt">Enter a route above and search to see your options.</p>
+        </div>
+      </div>
+
+      <div class="demo-disclaimer" id="demo-disclaimer">This is a prototype demonstration using example data — not live transportation data.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFITS ============ -->
+<section id="why">
+  <div class="wrap">
+    <div class="eyebrow" id="why-eyebrow">Why Mwasalaty</div>
+    <h2 class="section-title" id="why-title">Built around what actually matters on a commute.</h2>
+    <div class="benefit-grid reveal-group">
+      <div class="benefit-cell reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 7v6l4 2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke-width="1.8"/></svg></div><h4 id="bf-1-t">Save time</h4><p id="bf-1-d">Spend less time waiting and searching.</p></div>
+      <div class="benefit-cell reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 7c0-1.7-2.2-3-5-3s-5 1.3-5 3 2.2 3 5 3 5 1.3 5 3-2.2 3-5 3-5-1.3-5-3" stroke-width="1.8" stroke-linecap="round"/></svg></div><h4 id="bf-2-t">Save money</h4><p id="bf-2-d">Compare transportation costs before choosing.</p></div>
+      <div class="benefit-cell reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 17h16M4 12h16M4 7h16" stroke-width="1.8" stroke-linecap="round"/></svg></div><h4 id="bf-3-t">Compare options</h4><p id="bf-3-d">See different transportation modes in one place.</p></div>
+      <div class="benefit-cell reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 7v6l4 2M12 3a9 9 0 100 18 9 9 0 000-18z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4 id="bf-4-t">Reduce uncertainty</h4><p id="bf-4-d">Know what to expect before you leave.</p></div>
+      <div class="benefit-cell reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M17 20c0-2.8-2.2-5-5-5s-5 2.2-5 5M12 12a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" stroke-width="1.7" stroke-linecap="round"/></svg></div><h4 id="bf-5-t">Share smarter</h4><p id="bf-5-d">Connect with people traveling in the same direction.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHARED RIDE ============ -->
+<section class="shared" id="shared">
+  <div class="spotlight" id="spotlight-shared"></div>
+  <div class="ambient-orbs ambient-b" aria-hidden="true"><span class="aorb ao-1"></span><span class="aorb ao-2"></span></div>
+  <div class="wrap shared-grid">
+    <div>
+      <div class="eyebrow" id="sh-eyebrow">Shared rides</div>
+      <h2 class="section-title" id="sh-title">Going the same way? Go together.</h2>
+      <p class="section-sub" id="sh-sub">Find people traveling in the same direction and make shared transportation more efficient through organized pickup points.</p>
+      <div class="shared-note"><svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.3 3.9L2.7 17a2 2 0 001.7 3h15.2a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z" stroke-width="1.5"/></svg><span id="sh-note">A concept in prototype — safety features shown here are illustrative, not yet implemented.</span></div>
+    </div>
+    <div class="share-diagram reveal-group">
+      <div class="share-persons reveal">
+        <div class="share-person"><span class="av" id="sh-a">A</span><span class="ln"></span></div>
+        <div class="share-person"><span class="av" id="sh-b">B</span><span class="ln"></span></div>
+      </div>
+      <div class="share-arrow-col reveal"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="share-pin"><span class="dot"></span><span id="sh-pickup">Common pickup point</span></div></div>
+      <div class="share-dest reveal"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="10" r="3" stroke="#A9ADC2" stroke-width="1.8"/><path d="M12 21c4-4.5 7-8 7-11a7 7 0 10-14 0c0 3 3 6.5 7 11z" stroke="#A9ADC2" stroke-width="1.8"/></svg><span id="sh-dest">Shared destination</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT SHOWCASE ============ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow" id="ps-eyebrow">Product preview</div>
+    <h2 class="section-title" id="ps-title">A real MVP, screen by screen.</h2>
+    <div class="showcase-track reveal-group">
+      <div class="mini-phone reveal">
+        <div class="frame"><div class="screen">
+          <div class="mp-status"><span>9:41</span><span>●●●</span></div>
+          <div class="mp-appbar"><span class="dot"></span><span>Mwasalaty</span></div>
+          <div class="mp-field"><span class="pin from"></span><div class="txt"><small id="mp-1-from-lbl">CURRENT LOCATION</small><strong id="mp-1-from-val">Nasr City</strong></div></div>
+          <div class="mp-field"><span class="pin to"></span><div class="txt"><small id="mp-1-to-lbl">DESTINATION</small><strong id="mp-1-to-val">Downtown Cairo</strong></div></div>
+          <div class="mp-modes">
+            <div class="m active"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15h16M6 15v3m12-3v3M5 15l1.5-6.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 15M7 11h10" stroke="#E31E24" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+            <div class="m"><svg viewBox="0 0 24 24" fill="none"><path d="M3 17h2l2-6h10l2 6h2M5 17v2m14-2v2M7 11l1.5-4h7L17 11" stroke="#12182B" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+            <div class="m"><svg viewBox="0 0 24 24" fill="none"><path d="M4 16h16M6 16v2.5m12-2.5v2.5M5 16l1-7a2 2 0 0 1 2-1.7h8a2 2 0 0 1 2 1.7l1 7" stroke="#12182B" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+            <div class="m"><svg viewBox="0 0 24 24" fill="none"><path d="M17 20c0-2.8-2.2-5-5-5s-5 2.2-5 5M12 12a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" stroke="#12182B" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          </div>
+          <div class="mp-fill"></div>
+          <div class="mp-btn" id="mp-1-btn">Find my best route</div>
+        </div></div>
+        <div class="label" id="ps-1">Home / Search</div>
+      </div>
+
+      <div class="mini-phone reveal">
+        <div class="frame"><div class="screen">
+          <div class="mp-status"><span>9:41</span><span>●●●</span></div>
+          <div class="mp-appbar"><span class="back"><svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#12182B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span id="mp-2-title">Destination</span></div>
+          <div class="mp-field"><span class="pin from"></span><div class="txt"><small id="mp-2-from-lbl">CURRENT LOCATION</small><strong>Nasr City</strong></div></div>
+          <div class="mp-field active"><span class="pin to"></span><div class="txt"><small id="mp-2-to-lbl">DESTINATION</small><strong id="mp-2-typing">Down...</strong></div></div>
+          <div class="mp-suggest hi"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="10" r="3"/><path d="M12 21c4-4.5 7-8 7-11a7 7 0 10-14 0c0 3 3 6.5 7 11z"/></svg><span id="mp-2-s1">Downtown Cairo</span></div>
+          <div class="mp-suggest"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="10" r="3"/><path d="M12 21c4-4.5 7-8 7-11a7 7 0 10-14 0c0 3 3 6.5 7 11z"/></svg><span id="mp-2-s2">Tahrir Square</span></div>
+          <div class="mp-suggest"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="10" r="3"/><path d="M12 21c4-4.5 7-8 7-11a7 7 0 10-14 0c0 3 3 6.5 7 11z"/></svg><span id="mp-2-s3">Ramses Station</span></div>
+          <div class="mp-fill"></div>
+          <div class="mp-btn ghost" id="mp-2-btn">Continue</div>
+        </div></div>
+        <div class="label" id="ps-2">Enter destination</div>
+      </div>
+
+      <div class="mini-phone reveal">
+        <div class="frame"><div class="screen">
+          <div class="mp-status"><span>9:41</span><span>●●●</span></div>
+          <div class="mp-appbar"><span class="back"><svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#12182B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span id="mp-3-title">Compare</span></div>
+          <div class="mp-tabs"><span class="on" id="mp-3-tab1">Time</span><span id="mp-3-tab2">Cost</span><span id="mp-3-tab3">Convenience</span></div>
+          <div class="mp-row hi">
+            <div class="l"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15h16M6 15v3m12-3v3M5 15l1.5-6.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 15M7 11h10" stroke="#E31E24" stroke-width="1.6" stroke-linecap="round"/></svg></span><div class="txt"><div class="name" id="mp-3-r1-name">Metro</div><div class="sub" id="mp-3-r1-sub">32 min</div></div></div>
+            <div class="price">15</div>
+          </div>
+          <div class="mp-row">
+            <div class="l"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 17h2l2-6h10l2 6h2M5 17v2m14-2v2M7 11l1.5-4h7L17 11" stroke="#12182B" stroke-width="1.6" stroke-linecap="round"/></svg></span><div class="txt"><div class="name" id="mp-3-r2-name">Bus</div><div class="sub" id="mp-3-r2-sub">45 min</div></div></div>
+            <div class="price">10</div>
+          </div>
+          <div class="mp-row">
+            <div class="l"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 16h16M6 16v2.5m12-2.5v2.5M5 16l1-7a2 2 0 0 1 2-1.7h8a2 2 0 0 1 2 1.7l1 7" stroke="#12182B" stroke-width="1.6" stroke-linecap="round"/></svg></span><div class="txt"><div class="name" id="mp-3-r3-name">Microbus</div><div class="sub" id="mp-3-r3-sub">35 min</div></div></div>
+            <div class="price">20</div>
+          </div>
+          <div class="mp-row">
+            <div class="l"><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M17 20c0-2.8-2.2-5-5-5s-5 2.2-5 5M12 12a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" stroke="#12182B" stroke-width="1.6" stroke-linecap="round"/></svg></span><div class="txt"><div class="name" id="mp-3-r4-name">Shared Ride</div><div class="sub" id="mp-3-r4-sub">35 min</div></div></div>
+            <div class="price">18</div>
+          </div>
+        </div></div>
+        <div class="label" id="ps-3">Compare options</div>
+      </div>
+
+      <div class="mini-phone reveal">
+        <div class="frame"><div class="screen">
+          <div class="mp-status"><span>9:41</span><span>●●●</span></div>
+          <div class="mp-appbar"><span class="back"><svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#12182B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span id="mp-4-title">Selected route</span></div>
+          <div class="mp-detail">
+            <div class="top"><span class="badge" id="mp-4-badge">Fastest</span></div>
+            <div class="name" id="mp-4-name">Metro</div>
+            <div class="meta" id="mp-4-meta">32 min · Nearest station</div>
+            <div class="price">15<span style="font-size:7px;"> EGP</span></div>
+          </div>
+          <div class="mp-route">
+            <svg viewBox="0 0 160 40" fill="none"><path d="M8 32 C 40 30, 45 10, 80 12 C 110 14, 120 28, 152 8" stroke="#E31E24" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/><circle cx="8" cy="32" r="3.5" fill="#12182B"/><circle cx="152" cy="8" r="3.5" fill="#E31E24"/></svg>
+            <div class="pickup"><span class="dot"></span><span id="mp-4-pickup">Nearest metro station</span></div>
+          </div>
+          <div class="mp-fill"></div>
+          <div class="mp-btn" id="mp-4-btn">Choose this ride</div>
+        </div></div>
+        <div class="label" id="ps-4">Selected route</div>
+      </div>
+
+      <div class="mini-phone reveal">
+        <div class="frame"><div class="screen">
+          <div class="mp-status"><span>9:41</span><span>●●●</span></div>
+          <div class="mp-appbar"><span class="back"><svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#12182B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span id="mp-5-title">Pickup point</span></div>
+          <div class="mp-pin-card">
+            <div class="pin-ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="10" r="3" stroke-width="1.6"/><path d="M12 21c4-4.5 7-8 7-11a7 7 0 10-14 0c0 3 3 6.5 7 11z" stroke-width="1.6"/></svg></div>
+            <strong id="mp-5-place">Nasr City Metro Station</strong>
+            <span id="mp-5-sub">Platform 2 · Eastbound</span>
+            <div class="mp-confirm-tag"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="mp-5-tag">Meeting point set</span></div>
+          </div>
+        </div></div>
+        <div class="label" id="ps-5">Pickup point</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHO IS IT FOR ============ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow" id="wf-eyebrow">Who it's for</div>
+    <h2 class="section-title" id="wf-title">Built for the daily commute.</h2>
+    <div class="segment-grid reveal-group">
+      <div class="segment-card students reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M22 10L12 5 2 10l10 5 10-5zM6 12.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3 id="wf-1-t">Students</h3>
+        <p id="wf-1-d">Affordable and predictable daily transportation.</p>
+      </div>
+      <div class="segment-card employees reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="2" stroke-width="1.6"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2" stroke-width="1.6"/></svg></div>
+        <h3 id="wf-2-t">Employees</h3>
+        <p id="wf-2-d">Reliable transportation without paying ride-hailing prices every day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VALIDATION ============ -->
+<section class="validation" id="about">
+  <div class="wrap">
+    <div class="eyebrow" id="val-eyebrow">Our process</div>
+    <h2 class="section-title" id="val-title">We started with people, not technology.</h2>
+    <p class="section-sub" id="val-sub">Mwasalaty is shaped by real transportation research using a design-thinking process — not assumptions.</p>
+    <div class="val-track">
+      <div class="val-item"><div class="top"><span class="bead"></span><span class="track-line"></span></div><h5 id="v-1">Field research</h5></div>
+      <div class="val-item"><div class="top"><span class="bead"></span><span class="track-line"></span></div><h5 id="v-2">Empathy map</h5></div>
+      <div class="val-item"><div class="top"><span class="bead"></span><span class="track-line"></span></div><h5 id="v-3">Pain &amp; gain</h5></div>
+      <div class="val-item"><div class="top"><span class="bead"></span><span class="track-line"></span></div><h5 id="v-4">Five whys</h5></div>
+      <div class="val-item"><div class="top"><span class="bead"></span><span class="track-line"></span></div><h5 id="v-5">Point of view</h5></div>
+      <div class="val-item"><div class="top"><span class="bead"></span><span class="track-line"></span></div><h5 id="v-6">How might we</h5></div>
+      <div class="val-item"><div class="top"><span class="bead"></span><span class="track-line"></span></div><h5 id="v-7">Brainstorming</h5></div>
+      <div class="val-item"><div class="top"><span class="bead"></span><span class="track-line"></span></div><h5 id="v-8">Prototype</h5></div>
+    </div>
+    <div class="val-quote"><p id="val-quote-txt">The team researched real transportation experiences in Greater Cairo and used those insights to shape how Mwasalaty compares and organizes options.</p></div>
+  </div>
+</section>
+
+<!-- ============ MARKET ============ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow" id="mk-eyebrow">Market opportunity</div>
+    <h2 class="section-title" id="mk-title">Greater Cairo's transportation gap is only getting bigger.</h2>
+    <div class="market-grid reveal-group">
+      <div class="market-cell reveal"><div class="num"><span class="count" data-target="21" data-decimals="0" data-prefix="" data-suffix="M+">0</span></div><div class="lbl" id="mk-1">Greater Cairo residents</div></div>
+      <div class="market-cell reveal"><div class="num"><span class="count" data-target="24" data-decimals="0" data-prefix="" data-suffix="M">0</span></div><div class="lbl" id="mk-2">Projected population by 2027</div></div>
+      <div class="market-cell reveal"><div class="num"><span class="count" data-target="1.26" data-decimals="2" data-prefix="$" data-suffix="B">$0</span></div><div class="lbl" id="mk-3">Ride-hailing / shared mobility market, 2025</div></div>
+      <div class="market-cell reveal"><div class="num"><span class="count" data-target="2.41" data-decimals="2" data-prefix="$" data-suffix="B">$0</span></div><div class="lbl" id="mk-4">Projected market size by 2031</div></div>
+    </div>
+    <div class="market-src" id="mk-src">Figures are third-party market research estimates for Greater Cairo transportation and mobility, not Mwasalaty revenue or user numbers.</div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta-section" id="cta">
+  <div class="spotlight" id="spotlight-cta"></div>
+  <div class="ambient-orbs ambient-c" aria-hidden="true"><span class="aorb ao-1"></span><span class="aorb ao-2"></span></div>
+  <div class="wrap cta-grid">
+    <div>
+      <div class="eyebrow" id="cta-eyebrow">Join the pilot</div>
+      <h2 class="section-title" id="cta-title">Be one of the first to test Mwasalaty.</h2>
+      <p class="section-sub" id="cta-sub">We're building a smarter way to plan daily transportation. Join our early users and help us shape the experience.</p>
+    </div>
+    <div class="pilot-form" id="pilotForm">
+      <div id="pilotFields">
+        <div class="form-row" id="pf-name-row"><label id="pf-name-lbl" for="pf-name">Name</label><input id="pf-name" type="text" placeholder="Your name" required><span class="field-error" id="pf-name-err">Please enter your name.</span></div>
+        <div class="form-row" id="pf-email-row"><label id="pf-email-lbl" for="pf-email">Email</label><input id="pf-email" type="email" placeholder="you@email.com" required><span class="field-error" id="pf-email-err">Please enter a valid email.</span></div>
+        <div class="form-row">
+          <label id="pf-role-lbl">I am a</label>
+          <div class="role-group">
+            <button type="button" class="role-chip active" data-role="student" id="role-1" aria-pressed="true">Student</button>
+            <button type="button" class="role-chip" data-role="employee" id="role-2" aria-pressed="false">Employee</button>
+            <button type="button" class="role-chip" data-role="commuter" id="role-3" aria-pressed="false">Daily Commuter</button>
+          </div>
+        </div>
+        <button class="btn btn-primary pilot-submit" id="pilotSubmit">Join Mwasalaty</button>
+        <p class="pilot-trust" id="pilot-trust-note">Takes under a minute. Used only to reach out about the pilot — nothing else.</p>
+      </div>
+      <div class="pilot-success" id="pilotSuccess" style="display:none;">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#4ADE80" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4 id="ps-success-t">You're on the list.</h4>
+        <p id="ps-success-d">We'll reach out as Mwasalaty moves from prototype to pilot testing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <a href="#" class="logo"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M5 15L12 6L19 15" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span id="f-brand">Mwasalaty</span></a>
+      <ul class="footer-links">
+        <li><a href="#" id="f-home">Home</a></li>
+        <li><a href="#how" id="f-how">How it works</a></li>
+        <li><a href="#why" id="f-why">Why Mwasalaty</a></li>
+        <li><a href="#about" id="f-about">About</a></li>
+        <li><a href="#cta" id="f-contact">Contact</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#5B6072" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="#5B6072" stroke-width="1.5"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#5B6072" stroke-width="1.5"/><path d="M7 10v6M7 7v.01M11 16v-4a2 2 0 014 0v4M11 12" stroke="#5B6072" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span id="f-copy">© 2026 Mwasalaty. InnovEgypt Aspire Youth — prototype project.</span>
+      <span id="f-tag">مواصلاتي — Egyptian transportation, redesigned.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a href="#cta" class="btn btn-primary" id="sticky-cta-btn">Try Mwasalaty</a></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
